@@ -17,9 +17,10 @@ func InitRouter() *gin.Engine {
 			"_timestamp":        time.Now(),
 			"_message":          "REST API for RS Website",
 			"_base_url":         "https://go-vue-rs.herokuapp.com/",
-			"endpoint_hospital": "endpoint/hospital",
-			"endpoint_doctor":   "endpoint/doctor",
-			"endpoint_patient":  "endpoint/patient",
+			"endpoint_user":     "api/user",
+			"endpoint_hospital": "api/hospital",
+			"endpoint_doctor":   "api/doctor",
+			"endpoint_patient":  "api/patient",
 		})
 	})
 
@@ -32,7 +33,7 @@ func InitRouter() *gin.Engine {
 			user.GET("/:id", endpoint.GetUserById)
 			user.POST("/", endpoint.CreateUser)
 			user.PUT("/", endpoint.UpdateUser)
-			user.DELETE("/", endpoint.DeleteUser)
+			user.DELETE("/:id", endpoint.DeleteUser)
 		}
 	}
 

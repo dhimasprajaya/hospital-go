@@ -41,9 +41,42 @@ func CreateUser(c *gin.Context) {
 }
 
 func UpdateUser(c *gin.Context) {
+	var body model.User
+	if err := c.ShouldBindJSON(&body); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
 
+	id := body.ID
+	var obj model.User
+	// Record Not Found
+	if config.DB.First(&obj, id).RecordNotFound() == true {
+		c.JSON(http.StatusOK, gin.H{"message": "Record Not Found"})
+		return
+	}
+
+	if result := config.DB.Save(&body); result.Error != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": result.Error})
+		return
+	} else {
+		c.JSON(http.StatusOK, gin.H{"message": "Success Update", "data": body})
+	}
 }
 
 func DeleteUser(c *gin.Context) {
+	id := c.Param("id")
+	var obj model.User
 
+	// Record Not Found
+	if config.DB.First(&obj, id).RecordNotFound() == true {
+		c.JSON(http.StatusOK, gin.H{"message": "Record Not Found"})
+		return
+	}
+
+	if err := config.DB.Where("id = ?", id).Delete(&model.User{}).Error; err != nil {
+		c.JSON(http.StatusOK, gin.H{"error": err.Error()})
+		return
+	} else {
+		c.JSON(http.StatusOK, gin.H{"message": "Success Delete", "data": obj})
+	}
 }
