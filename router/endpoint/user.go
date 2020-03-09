@@ -19,7 +19,7 @@ func GetUserById(c *gin.Context) {
 
 	// Record Not Found
 	if config.DB.First(&obj, id).RecordNotFound() == true {
-		c.JSON(http.StatusNoContent, gin.H{"message": "Record Not Found"})
+		c.JSON(http.StatusOK, gin.H{"message": "Record Not Found"})
 		return
 	}
 
