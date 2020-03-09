@@ -1,6 +1,7 @@
 package router
 
 import (
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"sample/router/endpoint"
 	"time"
@@ -8,7 +9,7 @@ import (
 
 func InitRouter() *gin.Engine {
 	r := gin.Default()
-
+	r.Use(cors.Default())
 	// Main Router
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{
