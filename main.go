@@ -14,5 +14,5 @@ func main() {
 	r := router.InitRouter()
 
 	// Start Server
-	log.Fatal(r.Run(":8000"))
+	log.Fatal(r.Run(":8080"))
 }
