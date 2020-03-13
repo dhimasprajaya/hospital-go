@@ -36,6 +36,30 @@ func InitRouter() *gin.Engine {
 			user.PUT("/", endpoint.UpdateUser)
 			user.DELETE("/:id", endpoint.DeleteUser)
 		}
+		hospital := api.Group("/hospital")
+		{
+			hospital.GET("/", endpoint.GetHospitals)
+			hospital.GET("/:id", endpoint.GetHospitalById)
+			hospital.POST("/", endpoint.CreateHospital)
+			hospital.PUT("/", endpoint.UpdateHospital)
+			hospital.DELETE("/:id", endpoint.DeleteHospital)
+		}
+		doctor := api.Group("/doctor")
+		{
+			doctor.GET("/", endpoint.GetDoctors)
+			doctor.GET("/:id", endpoint.GetDoctorById)
+			doctor.POST("/", endpoint.CreateDoctor)
+			doctor.PUT("/", endpoint.UpdateDoctor)
+			doctor.DELETE("/:id", endpoint.DeleteDoctor)
+		}
+		patient := api.Group("/patient")
+		{
+			patient.GET("/", endpoint.GetPatients)
+			patient.GET("/:id", endpoint.GetPatientById)
+			patient.POST("/", endpoint.CreatePatient)
+			patient.PUT("/", endpoint.UpdatePatient)
+			patient.DELETE("/:id", endpoint.DeletePatient)
+		}
 	}
 
 	return r

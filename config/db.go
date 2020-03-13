@@ -21,5 +21,8 @@ func InitDatabase() {
 	DB.AutoMigrate(
 		&model.User{},
 		&model.Hospital{},
+		&model.Doctor{},
+		&model.Patient{},
+		&model.MedicalHistory{},
 	)
 }
