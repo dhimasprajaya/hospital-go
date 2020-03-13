@@ -3,26 +3,24 @@ package router
 import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"net/http"
 	"sample/router/endpoint"
-	"time"
 )
 
 func InitRouter() *gin.Engine {
 	r := gin.Default()
+	// Enable CORS
 	r.Use(cors.Default())
+	// Templates HTML
+	r.LoadHTMLGlob("templates/*")
+	// Static Directory
+	r.Static("/public", "./public")
+	// Set a lower memory limit for multipart forms (default is 32 MiB)
+	r.MaxMultipartMemory = 8 << 20 // 8 MiB
+
 	// Main Router
 	r.GET("/", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"_code":             200,
-			"_active":           true,
-			"_timestamp":        time.Now(),
-			"_message":          "REST API for RS Website",
-			"_base_url":         "https://go-vue-rs.herokuapp.com/",
-			"endpoint_user":     "api/user",
-			"endpoint_hospital": "api/hospital",
-			"endpoint_doctor":   "api/doctor",
-			"endpoint_patient":  "api/patient",
-		})
+		c.HTML(http.StatusOK, "index.html", nil)
 	})
 
 	// API Router
@@ -59,6 +57,11 @@ func InitRouter() *gin.Engine {
 			patient.POST("/", endpoint.CreatePatient)
 			patient.PUT("/", endpoint.UpdatePatient)
 			patient.DELETE("/:id", endpoint.DeletePatient)
+		}
+		upload := api.Group("/upload")
+		{
+			upload.POST("/image", endpoint.UploadImage)
+			upload.POST("/file", endpoint.UploadFile)
 		}
 	}
 
