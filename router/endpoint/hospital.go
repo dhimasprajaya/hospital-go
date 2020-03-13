@@ -8,7 +8,7 @@ import (
 )
 
 func GetHospitals(c *gin.Context) {
-	var list []model.Patient
+	var list []model.Hospital
 	config.DB.Find(&list)
 	c.JSON(http.StatusOK, list)
 }
