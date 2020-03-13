@@ -9,6 +9,15 @@ import (
 
 func GetHospitals(c *gin.Context) {
 	var list []model.Hospital
+	var obj model.Hospital
+
+	// Handle QueryParam with Object Field Name
+	if c.Bind(&obj) == nil {
+		config.DB.Where(&obj).Find(&list)
+		c.JSON(http.StatusOK, list)
+		return
+	}
+
 	config.DB.Find(&list)
 	c.JSON(http.StatusOK, list)
 }
