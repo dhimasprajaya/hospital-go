@@ -1,10 +1,10 @@
 package endpoint
 
 import (
+	"andhiga.com/dhimasprajaya/go-vue-rs/config"
+	"andhiga.com/dhimasprajaya/go-vue-rs/model"
 	"github.com/gin-gonic/gin"
 	"net/http"
-	"sample/config"
-	"sample/model"
 )
 
 func GetHospitals(c *gin.Context) {
@@ -12,7 +12,7 @@ func GetHospitals(c *gin.Context) {
 	var obj model.Hospital
 
 	// Handle QueryParam with Object Field Name
-	if c.Bind(&obj) == nil {
+	if c.ShouldBindQuery(&obj) == nil {
 		config.DB.Where(&obj).Find(&list)
 		c.JSON(http.StatusOK, list)
 		return
@@ -56,7 +56,7 @@ func UpdateHospital(c *gin.Context) {
 		return
 	}
 
-	id := body.ID
+	id := body.Id
 	var obj model.Hospital
 	// Record Not Found
 	if config.DB.First(&obj, id).RecordNotFound() == true {

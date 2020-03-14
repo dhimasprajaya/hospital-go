@@ -1,4 +1,4 @@
-module sample
+module andhiga.com/dhimasprajaya/go-vue-rs
 
 go 1.14
 

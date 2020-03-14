@@ -1,9 +1,9 @@
 package config
 
 import (
+	"andhiga.com/dhimasprajaya/go-vue-rs/model"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
-	"sample/model"
 )
 
 var DB *gorm.DB

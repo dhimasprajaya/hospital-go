@@ -1,10 +1,10 @@
 package router
 
 import (
+	"andhiga.com/dhimasprajaya/go-vue-rs/router/endpoint"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"net/http"
-	"sample/router/endpoint"
 )
 
 func InitRouter() *gin.Engine {

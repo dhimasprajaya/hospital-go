@@ -1,9 +1,9 @@
 package main
 
 import (
+	"andhiga.com/dhimasprajaya/go-vue-rs/config"
+	"andhiga.com/dhimasprajaya/go-vue-rs/router"
 	"log"
-	"sample/config"
-	"sample/router"
 )
 
 func main() {

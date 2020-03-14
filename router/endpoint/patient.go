@@ -1,10 +1,10 @@
 package endpoint
 
 import (
+	"andhiga.com/dhimasprajaya/go-vue-rs/config"
+	"andhiga.com/dhimasprajaya/go-vue-rs/model"
 	"github.com/gin-gonic/gin"
 	"net/http"
-	"sample/config"
-	"sample/model"
 )
 
 func GetPatients(c *gin.Context) {
@@ -47,7 +47,7 @@ func UpdatePatient(c *gin.Context) {
 		return
 	}
 
-	id := body.ID
+	id := body.Id
 	var obj model.Patient
 	// Record Not Found
 	if config.DB.First(&obj, id).RecordNotFound() == true {
