@@ -7,6 +7,9 @@ import (
 )
 
 func main() {
+	// Setup Config
+	config.Setup()
+
 	// Init DB
 	config.InitDatabase()
 
