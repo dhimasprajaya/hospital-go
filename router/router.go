@@ -1,6 +1,7 @@
 package router
 
 import (
+	"andhiga.com/dhimasprajaya/go-vue-rs/middleware"
 	"andhiga.com/dhimasprajaya/go-vue-rs/router/endpoint"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -23,8 +24,12 @@ func InitRouter() *gin.Engine {
 		c.HTML(http.StatusOK, "index.html", nil)
 	})
 
+	// Auth
+	r.POST("/login", endpoint.Login)
+
 	// API Router
 	api := r.Group("/api")
+	api.Use(middleware.JWT())
 	{
 		user := api.Group("/user")
 		{

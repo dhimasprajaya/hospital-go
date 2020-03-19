@@ -3,12 +3,14 @@ package main
 import (
 	"andhiga.com/dhimasprajaya/go-vue-rs/config"
 	"andhiga.com/dhimasprajaya/go-vue-rs/router"
+	"andhiga.com/dhimasprajaya/go-vue-rs/util"
 	"log"
 )
 
 func main() {
-	// Setup Config
+	// Setup Config and JWT
 	config.Setup()
+	util.Setup()
 
 	// Init DB
 	config.InitDatabase()
