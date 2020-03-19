@@ -8,7 +8,7 @@ import (
 )
 
 type Header struct {
-	Token string `json:"token"`
+	Authorization string `json:"authorization"`
 }
 
 func JWT() gin.HandlerFunc {
@@ -18,7 +18,7 @@ func JWT() gin.HandlerFunc {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		}
 
-		token := header.Token
+		token := header.Authorization
 		var msg = "OK"
 
 		if token == "" {
