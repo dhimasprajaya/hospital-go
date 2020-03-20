@@ -27,7 +27,8 @@ func Login(c *gin.Context) {
 		return
 	}
 
-	if json.Password != user.Password {
+	isMatch := util.CheckPasswordHash(json.Password, user.Password)
+	if isMatch != true {
 		c.JSON(http.StatusUnauthorized, gin.H{"message": "Wrong Password"})
 		return
 	}

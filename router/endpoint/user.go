@@ -3,6 +3,7 @@ package endpoint
 import (
 	"andhiga.com/dhimasprajaya/go-vue-rs/config"
 	"andhiga.com/dhimasprajaya/go-vue-rs/model"
+	"andhiga.com/dhimasprajaya/go-vue-rs/util"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -33,6 +34,13 @@ func CreateUser(c *gin.Context) {
 		return
 	}
 
+	password, err := util.HashPassword(json.Password)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	json.Password = password
+
 	if result := config.DB.Create(&json); result.Error != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": result.Error})
 		return
@@ -54,6 +62,13 @@ func UpdateUser(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"message": "Record Not Found"})
 		return
 	}
+
+	password, err := util.HashPassword(body.Password)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	body.Password = password
 
 	if result := config.DB.Save(&body); result.Error != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": result.Error})
