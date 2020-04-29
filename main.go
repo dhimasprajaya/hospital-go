@@ -1,9 +1,9 @@
 package main
 
 import (
-	"andhiga.com/dhimasprajaya/go-vue-rs/config"
-	"andhiga.com/dhimasprajaya/go-vue-rs/router"
-	"andhiga.com/dhimasprajaya/go-vue-rs/util"
+	"hospital-go/config"
+	"hospital-go/router"
+	"hospital-go/util"
 	"log"
 )
 

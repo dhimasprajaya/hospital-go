@@ -1,10 +1,10 @@
 package endpoint
 
 import (
-	"andhiga.com/dhimasprajaya/go-vue-rs/config"
-	"andhiga.com/dhimasprajaya/go-vue-rs/model"
-	"andhiga.com/dhimasprajaya/go-vue-rs/util"
 	"github.com/gin-gonic/gin"
+	"hospital-go/config"
+	"hospital-go/model"
+	"hospital-go/util"
 	"net/http"
 )
 

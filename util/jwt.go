@@ -1,7 +1,7 @@
 package util
 
 import (
-	"andhiga.com/dhimasprajaya/go-vue-rs/config"
+	"hospital-go/config"
 	"github.com/dgrijalva/jwt-go"
 	"time"
 )

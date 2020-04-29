@@ -1,10 +1,10 @@
 package config
 
 import (
-	"andhiga.com/dhimasprajaya/go-vue-rs/model"
 	"fmt"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
+	"hospital-go/model"
 )
 
 var DB *gorm.DB

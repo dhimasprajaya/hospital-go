@@ -1,9 +1,9 @@
 package middleware
 
 import (
-	"andhiga.com/dhimasprajaya/go-vue-rs/util"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
+	"hospital-go/util"
 	"net/http"
 )
 
