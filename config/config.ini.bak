@@ -1,0 +1,17 @@
+[config]
+# General
+PageSize = 10
+JwtSecret = SuperSecretKey
+
+# Image in Mb
+ImageMaxSize = 5
+ImageSavePath = upload/images/
+ImageAllowExt = .jpg,.jpeg,.png
+
+# Database
+DbType = [DB_TYPE]
+DbHost = [DB_HOST]
+DbPort = [DB_PORT]
+DbUser = [DB_USER]
+DbName = [DB_NAME]
+DbPassword = [DB_PASS]
