@@ -10,5 +10,8 @@ require (
 	github.com/golang/protobuf v1.4.0
 	github.com/google/uuid v1.1.1
 	github.com/jinzhu/gorm v1.9.12
+	github.com/smartystreets/goconvey v1.7.2 // indirect
 	golang.org/x/crypto v0.0.0-20200427165652-729f1e841bcc
+	golang.org/x/sys v0.0.0-20220615213510-4f61da869c0c // indirect
+	gopkg.in/ini.v1 v1.66.6 // indirect
 )
